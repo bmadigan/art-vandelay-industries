@@ -13,7 +13,13 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        $orders = Order::factory()->count(2000)->create();
+        for($i = 0; $i < 100; $i++) {
+            Order::factory()->create([
+                'created_at' => now()->subDays(rand(5, 200)),
+            ]);
+        }
+
+        $orders = Order::all();
 
         $orders->each(function ($order) {
             $order->orderItems()->saveMany(OrderItem::factory()->count(rand(1, 5))->create([

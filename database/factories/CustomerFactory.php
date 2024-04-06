@@ -33,4 +33,6 @@ class CustomerFactory extends Factory
             'notes' => $this->faker->text(),
         ];
     }
+
+
 }

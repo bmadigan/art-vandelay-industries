@@ -14,8 +14,9 @@ class OrderStatus extends Model
     protected $rows = [
         ['id' => 1, 'name' => 'Pending'],
         ['id' => 2, 'name' => 'Processing'],
-        ['id' => 3, 'name' => 'Shipped'],
-        ['id' => 4, 'name' => 'Delivered'],
-        ['id' => 5, 'name' => 'Canceled'],
+        ['id' => 3, 'name' => 'Paid'],
+        ['id' => 4, 'name' => 'Shipped'],
+        ['id' => 5, 'name' => 'Delivered'],
+        ['id' => 6, 'name' => 'Canceled'],
     ];
 }
