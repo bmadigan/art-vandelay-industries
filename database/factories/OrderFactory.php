@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer;
+use App\Models\OrderStatus;
+use App\Models\OrderType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Order;
@@ -21,18 +24,28 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::inRandomOrder()->first()->id;
+
         return [
-            'order_number' => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'order_type' => $this->faker->numberBetween(-10000, 10000),
-            'order_status' => $this->faker->numberBetween(-10000, 10000),
-            'po_employee_id' => $this->faker->randomNumber(),
-            'po_number' => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'customer_id' => $this->faker->randomNumber(),
-            'total_order_items_price' => $this->faker->numberBetween(-10000, 10000),
-            'discount' => $this->faker->numberBetween(-10000, 10000),
-            'shipping_cost' => $this->faker->numberBetween(-10000, 10000),
-            'total_amount' => $this->faker->numberBetween(-10000, 10000),
-            'user_id' => User::factory(),
+            'order_number' => 'ORD-' . $this->generateCode(),
+            'order_type' => OrderType::inRandomOrder()->first()->id,
+            'order_status' => OrderStatus::inRandomOrder()->first()->id,
+            'po_employee_id' => $user,
+            'po_number' => 'PO-' . Str::upper(Str::random(10)),
+            'customer_id' => Customer::inRandomOrder()->first()->id,
+            'total_order_items_price' => $this->faker->numberBetween(10000, 9999999),
+            'discount' => $this->faker->randomElement(['0', '5', '0', '0', '8', '10', '0']),
+            'shipping_cost' => $this->faker->numberBetween(10000, 9999999),
+            'total_amount' => $this->faker->numberBetween(10000, 9999999),
+            'user_id' => $user,
         ];
+    }
+
+    protected function generateCode() {
+        $numberPart = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+        $letterPart = chr(rand(65,90)) . chr(rand(65,90));
+        $finalPart = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+
+        return $numberPart . '-' . $letterPart . $finalPart;
     }
 }

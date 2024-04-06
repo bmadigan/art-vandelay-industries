@@ -7,7 +7,7 @@ use Sushi\Sushi;
 
 class TransportationType extends Model
 {
-    use Sushi\sushi;
+    use \Sushi\Sushi;
 
     public $timestamps = false;
 

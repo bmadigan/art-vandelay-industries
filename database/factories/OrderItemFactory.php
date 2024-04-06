@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\OrderItem;
@@ -20,12 +23,13 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
+        $product = Product::inRandomOrder()->first();
         return [
-            'order_id' => $this->faker->randomNumber(),
-            'product_id' => $this->faker->randomNumber(),
-            'item_quantity' => $this->faker->numberBetween(-10000, 10000),
-            'product_price' => $this->faker->numberBetween(-10000, 10000),
-            'product_sku' => $this->faker->regexify('[A-Za-z0-9]{100}'),
+            'order_id' => Order::inRandomOrder()->first()->id,
+            'product_id' =>$product->id,
+            'item_quantity' => $this->faker->numberBetween(10, 50),
+            'product_price' => $product->price,
+            'product_sku' => $product->code,
         ];
     }
 }

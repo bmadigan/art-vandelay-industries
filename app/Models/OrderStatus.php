@@ -7,7 +7,7 @@ use Sushi\Sushi;
 
 class OrderStatus extends Model
 {
-    use Sushi\sushi;
+    use \Sushi\Sushi;
 
     public $timestamps = false;
 

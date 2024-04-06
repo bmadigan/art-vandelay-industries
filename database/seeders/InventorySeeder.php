@@ -24,5 +24,12 @@ class InventorySeeder extends Seeder
             ]);
         });
 
+        $products->random(200)->each(function ($product) {
+            Inventory::factory()->create([
+                'warehouse_id' => Warehouse::inRandomOrder()->first()->id,
+                'product_id' => $product->id,
+            ]);
+        });
+
     }
 }
