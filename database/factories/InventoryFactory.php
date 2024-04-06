@@ -23,11 +23,11 @@ class InventoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'minimum_quantity' => $this->faker->numberBetween(-10000, 10000),
-            'maximum_quantity' => $this->faker->numberBetween(-10000, 10000),
-            'quantity_on_hand' => $this->faker->numberBetween(-10000, 10000),
-            'quantity_on_order' => $this->faker->numberBetween(-10000, 10000),
-            'reorder_threshold' => $this->faker->numberBetween(-10000, 10000),
+            'minimum_quantity' => $this->faker->randomElement(['10', '25', '50', '100', '500', '1000']),
+            'maximum_quantity' => $this->faker->randomElement(['1000', '2500', '5000']),
+            'quantity_on_hand' => $this->faker->numberBetween(10, 10000),
+            'quantity_on_order' => $this->faker->numberBetween(100, 10000),
+            'reorder_threshold' => $this->faker->randomElement(['100', '200', '300', '500']),
             'product_id' => Product::factory(),
             'warehouse_id' => Warehouse::factory(),
         ];
