@@ -10,6 +10,14 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(25)->create([
+            'role' => fake()->randomElement(['operations', 'admin']),
+        ]);
+
+        $me = User::factory()->create([
+            'name' => 'Brad Madigan',
+            'email' => 'bradmadigan@gmail.com',
+            'role' => 'admin',
+        ]);
     }
 }

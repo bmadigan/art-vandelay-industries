@@ -1,9 +1,4 @@
 models:
-  UserRole:
-    name: string:100
-    relationships:
-      hasMany: User
-
   Customer:
     first_name: string:100
     last_name: string:100 index

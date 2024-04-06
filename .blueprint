@@ -1,5 +1,4 @@
 created:
-    - database/factories/UserRoleFactory.php
     - database/factories/CustomerFactory.php
     - database/factories/ProductFactory.php
     - database/factories/ProductCategoryFactory.php
@@ -9,17 +8,15 @@ created:
     - database/factories/OrderItemFactory.php
     - database/factories/ShipmentFactory.php
     - database/factories/TransactionFactory.php
-    - database/migrations/2024_04_05_231638_create_user_roles_table.php
-    - database/migrations/2024_04_05_231639_create_customers_table.php
-    - database/migrations/2024_04_05_231640_create_products_table.php
-    - database/migrations/2024_04_05_231641_create_product_categories_table.php
-    - database/migrations/2024_04_05_231642_create_warehouses_table.php
-    - database/migrations/2024_04_05_231643_create_inventories_table.php
-    - database/migrations/2024_04_05_231644_create_orders_table.php
-    - database/migrations/2024_04_05_231645_create_order_items_table.php
-    - database/migrations/2024_04_05_231646_create_shipments_table.php
-    - database/migrations/2024_04_05_231647_create_transactions_table.php
-    - app/Models/UserRole.php
+    - database/migrations/2024_04_06_175832_create_customers_table.php
+    - database/migrations/2024_04_06_175833_create_products_table.php
+    - database/migrations/2024_04_06_175834_create_product_categories_table.php
+    - database/migrations/2024_04_06_175835_create_warehouses_table.php
+    - database/migrations/2024_04_06_175836_create_inventories_table.php
+    - database/migrations/2024_04_06_175837_create_orders_table.php
+    - database/migrations/2024_04_06_175838_create_order_items_table.php
+    - database/migrations/2024_04_06_175839_create_shipments_table.php
+    - database/migrations/2024_04_06_175840_create_transactions_table.php
     - app/Models/Customer.php
     - app/Models/Product.php
     - app/Models/ProductCategory.php
@@ -38,7 +35,6 @@ created:
     - database/seeders/TransactionSeeder.php
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
-    UserRole: { name: 'string:100', relationships: { hasMany: User } }
     Customer: { first_name: 'string:100', last_name: 'string:100 index', email_primary: 'nullable string:100', email_invoice: 'nullable string:100', street_address: 'nullable string:200', city: 'nullable string:100', state: 'nullable string:100', zip: 'nullable string:20', phone_primary: 'nullable string:20', notes: 'nullable text', relationships: { hasMany: 'Order, Shipment' } }
     Product: { code: 'string:100 index', name: 'string:100 index', description: 'nullable text', reorder_quantity: integer, price: 'decimal:10,2', relationships: { belongsTo: ProductCategory, hasMany: 'Inventory, OrderItem' } }
     ProductCategory: { name: 'string:100', description: 'nullable text', relationships: { hasMany: Product } }
