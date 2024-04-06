@@ -42,4 +42,9 @@ class CustomDataProvider extends Base
     {
         return static::$randomLastName[array_rand(static::$randomLastName)];
     }
+
+    public function avMobileNumber()
+    {
+        return $this->numerify('(###) ###-####');
+    }
 }
