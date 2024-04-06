@@ -1,0 +1,102 @@
+models:
+  UserRole:
+    name: string:100
+    relationships:
+      hasMany: User
+
+  Customer:
+    first_name: string:100
+    last_name: string:100 index
+    email_primary: nullable string:100
+    email_invoice: nullable string:100
+    street_address: nullable string:200
+    city: nullable string:100
+    state: nullable string:100
+    zip: nullable string:20
+    phone_primary: nullable string:20
+    notes: nullable text
+    relationships:
+      hasMany: Order, Shipment
+
+  Product:
+    code: string:100 index
+    name: string:100 index
+    description: nullable text
+    reorder_quantity: integer
+
+    price: decimal:10,2
+    relationships:
+      belongsTo: ProductCategory
+      hasMany: Inventory, OrderItem
+
+  ProductCategory:
+    name: string:100
+    description: nullable text
+    relationships:
+      hasMany: Product
+
+  Warehouse:
+    name: string:100 index
+    code: string:25 index
+    street_address: nullable string:200
+    city: nullable string:100
+    state: nullable string:100
+    zip: nullable string:20
+
+  Inventory:
+    minimum_quantity: integer
+    maximum_quantity: integer
+    quantity_on_hand: integer
+    quantity_on_order: integer
+    reorder_threshold: integer
+    relationships:
+      belongsTo: Product, Warehouse
+
+  Order:
+    order_number: string:100 index
+    order_type: integer
+    order_status: integer
+    po_employee_id: unsignedInteger foreignKey:User
+    po_number: nullable string:100 index
+    customer_id: unsignedInteger foreignKey:Customer
+    total_order_items_price: integer
+    discount: nullable integer
+    shipping_cost: nullable integer
+    total_amount: integer
+    relationships:
+      hasMany: OrderItem
+      belongsTo: Customer, User
+
+  OrderItem:
+    order_id: unsignedInteger foreignKey:Order
+    product_id: unsignedInteger foreignKey:Product
+    item_quantity: integer
+    product_price: integer
+    product_sku: string:100
+    relationships:
+      belongsTo: Order, Product
+
+  Shipment:
+    customer_id: unsignedInteger foreignKey:Customer
+    transportation_type: integer
+    tracking_number: string:100 index
+    carrier: string:100
+    scheduled_date: datetime
+    actual_date: nullable datetime
+    shipment_status: integer
+    order_id: unsignedInteger foreignKey:Order
+    relationships:
+      belongsTo: Order, Customer
+
+  Transaction:
+    transaction_number: string:100 index
+    order_id: unsignedInteger foreignKey:Order
+    customer_id: unsignedInteger foreignKey:Customer
+    transaction_employee_id: unsignedInteger foreignKey:User
+    transaction_status: integer
+    transaction_amount: integer
+    transaction_date: datetime
+    relationships:
+      belongsTo: Order, Customer, User
+
+seeders: UserRole, Customer, Product, Warehouse, Inventory, Order, Transaction

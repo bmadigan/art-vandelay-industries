@@ -1,0 +1,50 @@
+created:
+    - database/factories/UserRoleFactory.php
+    - database/factories/CustomerFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/ProductCategoryFactory.php
+    - database/factories/WarehouseFactory.php
+    - database/factories/InventoryFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/OrderItemFactory.php
+    - database/factories/ShipmentFactory.php
+    - database/factories/TransactionFactory.php
+    - database/migrations/2024_04_05_231638_create_user_roles_table.php
+    - database/migrations/2024_04_05_231639_create_customers_table.php
+    - database/migrations/2024_04_05_231640_create_products_table.php
+    - database/migrations/2024_04_05_231641_create_product_categories_table.php
+    - database/migrations/2024_04_05_231642_create_warehouses_table.php
+    - database/migrations/2024_04_05_231643_create_inventories_table.php
+    - database/migrations/2024_04_05_231644_create_orders_table.php
+    - database/migrations/2024_04_05_231645_create_order_items_table.php
+    - database/migrations/2024_04_05_231646_create_shipments_table.php
+    - database/migrations/2024_04_05_231647_create_transactions_table.php
+    - app/Models/UserRole.php
+    - app/Models/Customer.php
+    - app/Models/Product.php
+    - app/Models/ProductCategory.php
+    - app/Models/Warehouse.php
+    - app/Models/Inventory.php
+    - app/Models/Order.php
+    - app/Models/OrderItem.php
+    - app/Models/Shipment.php
+    - app/Models/Transaction.php
+    - database/seeders/UserRoleSeeder.php
+    - database/seeders/CustomerSeeder.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/WarehouseSeeder.php
+    - database/seeders/InventorySeeder.php
+    - database/seeders/OrderSeeder.php
+    - database/seeders/TransactionSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    UserRole: { name: 'string:100', relationships: { hasMany: User } }
+    Customer: { first_name: 'string:100', last_name: 'string:100 index', email_primary: 'nullable string:100', email_invoice: 'nullable string:100', street_address: 'nullable string:200', city: 'nullable string:100', state: 'nullable string:100', zip: 'nullable string:20', phone_primary: 'nullable string:20', notes: 'nullable text', relationships: { hasMany: 'Order, Shipment' } }
+    Product: { code: 'string:100 index', name: 'string:100 index', description: 'nullable text', reorder_quantity: integer, price: 'decimal:10,2', relationships: { belongsTo: ProductCategory, hasMany: 'Inventory, OrderItem' } }
+    ProductCategory: { name: 'string:100', description: 'nullable text', relationships: { hasMany: Product } }
+    Warehouse: { name: 'string:100 index', code: 'string:25 index', street_address: 'nullable string:200', city: 'nullable string:100', state: 'nullable string:100', zip: 'nullable string:20' }
+    Inventory: { minimum_quantity: integer, maximum_quantity: integer, quantity_on_hand: integer, quantity_on_order: integer, reorder_threshold: integer, relationships: { belongsTo: 'Product, Warehouse' } }
+    Order: { order_number: 'string:100 index', order_type: integer, order_status: integer, po_employee_id: 'unsignedInteger foreignKey:User', po_number: 'nullable string:100 index', customer_id: 'unsignedInteger foreignKey:Customer', total_order_items_price: integer, discount: 'nullable integer', shipping_cost: 'nullable integer', total_amount: integer, relationships: { hasMany: OrderItem, belongsTo: 'Customer, User' } }
+    OrderItem: { order_id: 'unsignedInteger foreignKey:Order', product_id: 'unsignedInteger foreignKey:Product', item_quantity: integer, product_price: integer, product_sku: 'string:100', relationships: { belongsTo: 'Order, Product' } }
+    Shipment: { customer_id: 'unsignedInteger foreignKey:Customer', transportation_type: integer, tracking_number: 'string:100 index', carrier: 'string:100', scheduled_date: datetime, actual_date: 'nullable datetime', shipment_status: integer, order_id: 'unsignedInteger foreignKey:Order', relationships: { belongsTo: 'Order, Customer' } }
+    Transaction: { transaction_number: 'string:100 index', order_id: 'unsignedInteger foreignKey:Order', customer_id: 'unsignedInteger foreignKey:Customer', transaction_employee_id: 'unsignedInteger foreignKey:User', transaction_status: integer, transaction_amount: integer, transaction_date: datetime, relationships: { belongsTo: 'Order, Customer, User' } }
