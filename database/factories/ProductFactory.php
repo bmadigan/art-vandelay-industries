@@ -22,12 +22,20 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => $this->faker->regexify('[A-Za-z0-9]{100}'),
+            'code' => $this->generateCode(),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'reorder_quantity' => $this->faker->numberBetween(-10000, 10000),
-            'price' => $this->faker->randomFloat(2, 0, 99999999.99),
+            'reorder_quantity' => $this->faker->numberBetween(100, 500),
+            'price' => $this->faker->numberBetween(1000,200000),
             'product_category_id' => ProductCategory::factory(),
         ];
+    }
+
+    protected function generateCode() {
+        $numberPart = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
+        $letterPart = chr(rand(65,90)) . chr(rand(65,90));
+        $finalPart = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+
+        return $numberPart . '-' . $letterPart . $finalPart;
     }
 }

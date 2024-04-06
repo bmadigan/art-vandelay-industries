@@ -21,15 +21,15 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => $this->faker->firstName(),
+            'first_name' => $this->faker->avRandomFirstName(),
             'last_name' => $this->faker->lastName(),
-            'email_primary' => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'email_invoice' => $this->faker->regexify('[A-Za-z0-9]{100}'),
-            'street_address' => $this->faker->regexify('[A-Za-z0-9]{200}'),
+            'email_primary' => $this->faker->safeEmail(),
+            'email_invoice' => $this->faker->safeEmail(),
+            'street_address' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
-            'state' => $this->faker->regexify('[A-Za-z0-9]{100}'),
+            'state' => $this->faker->state(),
             'zip' => $this->faker->postcode(),
-            'phone_primary' => $this->faker->regexify('[A-Za-z0-9]{20}'),
+            'phone_primary' => $this->faker->avMobileNumber(),
             'notes' => $this->faker->text(),
         ];
     }

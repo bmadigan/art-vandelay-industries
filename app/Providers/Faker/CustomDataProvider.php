@@ -33,6 +33,10 @@ class CustomDataProvider extends Base
         'Hill', 'Ramirez', 'Campbell', 'Mitchell', 'Roberts', 'Carter', 'Phillips', 'Evans', 'Turner', 'Torres'
     ];
 
+//    protected static $productCatories = [
+//        'Balloons', 'Gloves', 'Condoms', 'Bed Sheets', 'Clothing', 'Catheters', 'Prophylactics', 'Adhesives', 'Foam', 'Toys'
+//    ];
+
     public function avRandomFirstName()
     {
         return static::$randomFirstName[array_rand(static::$randomFirstName)];
@@ -45,6 +49,11 @@ class CustomDataProvider extends Base
 
     public function avMobileNumber()
     {
-        return $this->numerify('(###) ###-####');
+        return $this->numerify('(###)###-####');
     }
+
+//    public function avProductCategoryTypes()
+//    {
+//        return static::
+//    }
 }
