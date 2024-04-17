@@ -5,7 +5,7 @@
                Customer Listings
             </h2>
             <x-secondary-button>
-                <a href="{{ route('add-customer') }}">Add Customer</a>
+                <a href="{{ route('add-customer') }}" wire:navigate>Add Customer</a>
             </x-secondary-button>
         </div>
     </x-slot>

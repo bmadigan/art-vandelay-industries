@@ -63,7 +63,12 @@
                         </div>
 
                         <div class="flex items-center gap-4 mt-4">
-                            <x-primary-button>Save Customer</x-primary-button>
+                            <x-primary-button>
+                                Save Customer
+                                <div wire:loading.flex class="flex absolute top-0 right-0 bottom-0 items-end">
+                                    <x-spinner class="h-5 w-5 text-white" />
+                                </div>
+                            </x-primary-button>
 
                             <x-action-message class="me-3" on="customer-added">
                                 Customer has been added.

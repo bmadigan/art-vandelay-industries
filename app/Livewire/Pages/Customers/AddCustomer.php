@@ -25,7 +25,7 @@ class AddCustomer extends Component
         $this->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email_primary' => 'required|email',
+            //'email_primary' => 'required|email',
         ]);
 
         Customer::create([
