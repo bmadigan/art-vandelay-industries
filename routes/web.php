@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::middleware('auth')->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    //Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', \App\Livewire\Pages\Dashboard::class)->name('dashboard');
 
     Route::view('test', 'test')->name('test');
 

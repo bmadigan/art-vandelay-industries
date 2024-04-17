@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Customers;
 
 use App\Models\Customer;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -44,6 +45,7 @@ class AddCustomer extends Component
         $this->redirect(route('customers'));
     }
 
+    #[Layout('layouts.app')]
     public function render()
     {
         return view('livewire.pages.customers.add-customer');
