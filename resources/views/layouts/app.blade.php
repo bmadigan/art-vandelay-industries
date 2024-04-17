@@ -32,9 +32,9 @@
             <!-- Page Content -->
             <main>
                 <div class="py-12">
-                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-12">
-                        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div class="text-slate-900">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+                        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
 
                                 {{ $slot }}
 

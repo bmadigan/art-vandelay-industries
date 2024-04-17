@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl text-slate-800 leading-tight">
-                Customer Listings 321
+                Customers
             </h2>
             <x-secondary-button>
                 <a href="{{ route('add-customer') }}" wire:navigate>Add Customer</a>
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                     @foreach($this->customers as $customer)
-                        <tr>
+                        <tr wire:key="customer-{{ $customer->id }}">
                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                 {{ $customer->first_name }} {{ $customer->last_name }}
                             </td>
