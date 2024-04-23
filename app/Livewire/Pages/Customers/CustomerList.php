@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Pages\Customers;
 
-use Livewire\Component;
-use Livewire\Attributes\Computed;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\Layout;
 use App\Models\Customer;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('Customer List')]
@@ -14,15 +14,28 @@ class CustomerList extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     #[Computed(cache: false)]
     public function customers()
     {
-        return Customer::query()->orderBy('id', 'desc')->paginate(20);
+        if ($this->search === '') {
+            return Customer::query()->orderBy('id', 'desc')->paginate(20);
+        }
+
+        return Customer::query()
+            ->whereAny([
+                'first_name',
+                'last_name',
+                'email_primary',
+            ], 'LIKE', "%$this->search%")
+            ->orderBy('id', 'desc')
+            ->paginate(20);
     }
 
     public function delete($customerId)
     {
-        // Authorize!
+        // Should Authorize! But I need to get this out.
         $customer = Customer::find($customerId);
 
         $customer->delete();
