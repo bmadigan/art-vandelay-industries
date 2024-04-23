@@ -20,9 +20,12 @@ class CustomerList extends Component
         return Customer::query()->orderBy('id', 'desc')->paginate(20);
     }
 
-    public function add()
+    public function delete($customerId)
     {
-        dd('should not be here');
+        // Authorize!
+        $customer = Customer::find($customerId);
+
+        $customer->delete();
     }
 
     #[Layout('layouts.app')]

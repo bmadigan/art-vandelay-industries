@@ -45,7 +45,7 @@
                     <div class="mt-2 w-full grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-6">
                         <div class="sm:col-span-6">
                             <x-input-label>Street Address</x-input-label>
-                            <x-text-input wire:model="form.address" id="address" />
+                            <x-text-input wire:model="form.streetAddress" id="streetAddress" />
                         </div>
                         <div class="sm:col-span-3">
                             <x-input-label>City</x-input-label>
