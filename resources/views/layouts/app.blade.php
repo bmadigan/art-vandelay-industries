@@ -13,6 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- AlpineJS UI Components -->
+        <script src="https://unpkg.com/@alpinejs/ui@3.13.9-beta.0/dist/cdn.min.js" defer></script>
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
