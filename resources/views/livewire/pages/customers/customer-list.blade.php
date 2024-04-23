@@ -5,7 +5,7 @@
                 Customers
             </h2>
 
-            <livewire:pages.customers.add-customer-dialog />
+            <livewire:pages.customers.add-customer-dialog @saved="$refresh" />
 
         </div>
     </x-slot>

@@ -17,7 +17,7 @@ class AddCustomerDialog extends Component
 
         $this->reset('show');
 
-        //$this->dispatch('added-customer');
+        $this->dispatch('saved');
     }
 
     public function render()
