@@ -4,10 +4,9 @@
             <h2 class="font-semibold text-xl text-slate-800 leading-tight">
                 Customers
             </h2>
-            <x-primary-button>
-                <x-icon.add class="mr-2"/>
-                Add Customer
-            </x-primary-button>
+
+            <livewire:pages.customers.add-customer-dialog />
+
         </div>
     </x-slot>
 
@@ -53,45 +52,6 @@
 
         </div>
     </div>
-
-    <!-- Modal -->
-    <x-modal name="create-new-customer" :show="$errors->isNotEmpty()" focusable>
-        <form wire:submit.prevent="save" class="w-full">
-            <div class="flex flex-col items-start p-4">
-                <div class="flex items-center pb-4 mb-4 w-full border-b">
-                    <div class="text-lg font-medium text-gray-900">Create Customer</div>
-                </div>
-                <div class="mb-2 w-full">
-                    <label class="block text-sm font-medium text-gray-700" for="name">
-                        First Name
-                    </label>
-                    <input wire:model.live.debounce="firstName" id="firstName"
-                           class="py-2 pr-4 pl-2 mt-2 w-full text-sm rounded-lg border border-gray-400 sm:text-base focus:outline-none focus:border-blue-400" />
-                    @error('firstName')
-                    <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mb-2 w-full">
-                    <label class="block text-sm font-medium text-gray-700" for="slug">
-                        Slug
-                    </label>
-                    <input wire:model="lastName" id="lastName"
-                           class="py-2 pr-4 pl-2 mt-2 w-full text-sm rounded-lg border border-gray-400 sm:text-base focus:outline-none focus:border-blue-400" />
-                    @error('lastName')
-                    <span class="text-sm text-red-500">{{ $message }}</span>
-                    @enderror
-                </div>
-                <div class="mt-4 ml-auto">
-                    <x-primary-button type="submit">
-                        Create Customer
-                    </x-primary-button>
-                    <x-secondary-button wire:click="$dispatch('close', 'create-new-customer')">
-                        Cancel
-                    </x-secondary-button>
-                </div>
-            </div>
-        </form>
-    </x-modal>
 
 </div>
 
