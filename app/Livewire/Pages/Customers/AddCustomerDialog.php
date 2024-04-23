@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Customers;
 
 use App\Livewire\Forms\CustomerForm;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class AddCustomerDialog extends Component
 {
@@ -18,6 +19,8 @@ class AddCustomerDialog extends Component
         $this->reset('show');
 
         $this->dispatch('saved');
+
+        Toaster::success('👍 Customer has been created!');
     }
 
     public function render()

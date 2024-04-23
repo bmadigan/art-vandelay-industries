@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Customers;
 
 use App\Livewire\Forms\CustomerForm;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class TableRow extends Component
 {
@@ -23,6 +24,8 @@ class TableRow extends Component
         $this->form->update();
 
         $this->customer->refresh();
+
+        Toaster::success('🎉 Customer has been updated!');
 
         $this->reset('showEditCustomer');
     }

@@ -8,6 +8,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Masmerise\Toaster\Toaster;
 
 #[Title('Customer List')]
 class CustomerList extends Component
@@ -39,6 +40,8 @@ class CustomerList extends Component
         $customer = Customer::find($customerId);
 
         $customer->delete();
+
+        Toaster::success('🗑️ Customer has been removed!');
     }
 
     #[Layout('layouts.app')]
