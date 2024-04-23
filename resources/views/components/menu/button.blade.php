@@ -1,3 +1,3 @@
-<x-secondary-button type="button" x-menu:button {{ $attributes }}>
+<button class="text-sky-500" type="button" x-menu:button {{ $attributes }}>
     {{ $slot }}
-</x-secondary-button>
+</button>

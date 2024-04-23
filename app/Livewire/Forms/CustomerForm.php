@@ -6,7 +6,7 @@ use App\Models\Customer;
 use Livewire\Attributes\Rule;
 use Livewire\Form;
 
-class CreateCustomer extends Form
+class CustomerForm extends Form
 {
     #[Rule('required|min:3')]
     public string $firstName = '';

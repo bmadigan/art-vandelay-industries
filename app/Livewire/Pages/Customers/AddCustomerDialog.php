@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Pages\Customers;
 
-use App\Livewire\Forms\CreateCustomer;
+use App\Livewire\Forms\CustomerForm;
 use Livewire\Component;
 
 class AddCustomerDialog extends Component
 {
-    public CreateCustomer $form;
+    public CustomerForm $form;
 
     public $show = false;
 
