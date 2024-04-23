@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('email_invoice', 100)->nullable();
             $table->string('street_address', 200)->nullable();
             $table->string('city', 100)->nullable();
-            $table->string('state', 100)->nullable();
+            $table->string('state', 50)->nullable();
+            $table->string('country', 100)->nullable();
             $table->string('zip', 20)->nullable();
             $table->string('phone_primary', 20)->nullable();
             $table->text('notes')->nullable();

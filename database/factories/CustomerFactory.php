@@ -28,6 +28,7 @@ class CustomerFactory extends Factory
             'street_address' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
             'state' => $this->faker->state(),
+            'country' => $this->faker->randomElement(['USA', 'Canada']),
             'zip' => $this->faker->postcode(),
             'phone_primary' => $this->faker->avMobileNumber(),
             'notes' => $this->faker->text(),
