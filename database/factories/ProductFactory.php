@@ -2,10 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductFactory extends Factory
 {
@@ -26,16 +25,17 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'reorder_quantity' => $this->faker->numberBetween(100, 500),
-            'price' => $this->faker->numberBetween(1000,200000),
+            'price' => $this->faker->numberBetween(1000, 200000),
             'product_category_id' => ProductCategory::factory(),
         ];
     }
 
-    protected function generateCode() {
+    protected function generateCode()
+    {
         $numberPart = str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT);
-        $letterPart = chr(rand(65,90)) . chr(rand(65,90));
+        $letterPart = chr(rand(65, 90)).chr(rand(65, 90));
         $finalPart = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
 
-        return $numberPart . '-' . $letterPart . $finalPart;
+        return $numberPart.'-'.$letterPart.$finalPart;
     }
 }

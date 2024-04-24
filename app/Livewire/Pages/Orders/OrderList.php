@@ -2,13 +2,10 @@
 
 namespace App\Livewire\Pages\Orders;
 
-use App\Enums\DateRange;
 use App\Models\Order;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Masmerise\Toaster\Toaster;
@@ -22,13 +19,13 @@ class OrderList extends Component
 
     public Filters $filters;
 
-
     #[Computed(cache: false)]
     public function orders()
     {
         // Step 1, start the query
         $query = Order::query()
-            ->withCount('shipments');
+            ->withCount('shipments')
+            ->withCount('orderItems');
 
         // If we are searching, do that here.
         if ($this->search !== '') {
@@ -50,9 +47,12 @@ class OrderList extends Component
     {
         $order = Order::find($orderId);
 
-        $order->delete();
+        if ($order->cancelOrder()) {
+            Toaster::success('🗑️ Order has been deleted!');
+        } else {
+            Toaster::warning('🚫️ Order has been shipped already.');
+        }
 
-        Toaster::success('🗑️ Order has been deleted!');
     }
 
     #[Layout('layouts.app')]

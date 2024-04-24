@@ -34,10 +34,10 @@ class OrderFactory extends Factory
             'po_employee_id' => $user,
             'po_number' => 'PO-'.Str::upper(Str::random(10)),
             'customer_id' => Customer::inRandomOrder()->first()->id,
-            'total_order_items_price' => $this->faker->numberBetween(10000, 9999999),
+            'total_order_items_price' => $this->faker->numberBetween(1000, 99999),
             'discount' => $this->faker->randomElement(['0', '5', '0', '0', '8', '10', '0']),
-            'shipping_cost' => $this->faker->numberBetween(10000, 9999999),
-            'total_amount' => $this->faker->numberBetween(10000, 9999999),
+            'shipping_cost' => $this->faker->numberBetween(1000, 99999),
+            'total_amount' => $this->faker->numberBetween(1000, 99999),
             'user_id' => $user,
             'created_at' => $createdAt,
         ];

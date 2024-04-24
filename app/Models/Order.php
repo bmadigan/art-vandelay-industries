@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Number;
 
 class Order extends Model
 {
@@ -46,6 +45,26 @@ class Order extends Model
         'user_id' => 'integer',
     ];
 
+    public function cancelOrder(): bool
+    {
+        if ($this->canBeCanceled()) {
+            $this->orderItems()->delete();
+            $this->shipments()->delete();
+
+            $this->update([
+                'order_status' => 6, // Canceled
+            ]);
+
+            // Possible TODOS:
+            // ReStalk Inventory
+            // Notify the Customer
+
+            return true;
+        }
+
+        return false;
+    }
+
     protected function orderDate(): Attribute
     {
         return Attribute::make(
@@ -55,6 +74,15 @@ class Order extends Model
                     : 'M d, Y, g:i A'
             )
         );
+    }
+
+    public function canBeCanceled(): bool
+    {
+        if ($this->orderStatus->id > 2) { //Not Pending or Processing
+            return false;
+        }
+
+        return true;
     }
 
     protected function orderAmount(): Attribute
