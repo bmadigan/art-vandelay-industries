@@ -12,6 +12,7 @@
         <!-- Search / Filtering 0-->
         <div class="mb-2 flex justify-between items-center">
             <div>
+                <div class="text-xs text-slate-500 italic leading-loose">Filter By Date Range:</div>
                 <span class="isolate inline-flex rounded-md shadow-sm">
                   <button
                       wire:click="$set('filters.range', 'last7')"
