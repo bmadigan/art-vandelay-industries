@@ -1,6 +1,13 @@
 <tr>
     <td class="whitespace-nowrap py-3 text-xs font-medium text-slate-900 sm:pl-0">
-        {{ $customer->full_name }}
+        <div class="flex items-center">
+            <div>
+                <img src="{{ $customer->avatar }}" class="rounded-full w-8 mr-2">
+            </div>
+            <div>
+                {{ $customer->full_name }}
+            </div>
+        </div>
     </td>
     <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->email_primary ?? 'n/a'}}</td>
     <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->email_invoice ?? 'n/a' }}</td>

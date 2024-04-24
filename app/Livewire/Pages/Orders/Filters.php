@@ -3,15 +3,13 @@
 namespace App\Livewire\Pages\Orders;
 
 use App\Enums\DateRange;
+use Livewire\Attributes\Url;
 use Livewire\Form;
 
 class Filters extends Form
 {
+    #[Url]
     public DateRange $range = DateRange::All_Time;
-
-    public $start;
-
-    public $end;
 
     public function apply($query)
     {
@@ -21,7 +19,7 @@ class Filters extends Form
 
     public function applyRange($query)
     {
-        if ($this->range === DateRange::All_Time) {
+        if ($this->range->value === 'all') {
             return $query;
         }
 

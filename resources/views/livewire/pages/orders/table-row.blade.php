@@ -16,7 +16,12 @@
         <x-status-badge :label="$order->orderType->name" :color="$order->orderType->color" />
     </td>
     <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-900">
-        <div class="text-slate-900 font-medium">{{ $order->customer->full_name ?? 'n/a' }}</div>
+        <div class="flex items-center pb-2">
+            <div>
+                <img src="{{ $order->customer->avatar }}" class="rounded-full w-6 mr-1">
+            </div>
+            <div class="text-slate-900 text-sm font-medium">{{ $order->customer->full_name ?? 'n/a' }}</div>
+        </div>
         <div class="flex items-center">
             <x-icon.mail class="w-3 h-3 mr-1 text-slate-400" />
             {{ $order->customer->email_primary ?? 'n/a' }}
@@ -47,7 +52,7 @@
     <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-900">
         <div>
             <div class="mt-1 text-xs leading-5 text-slate-500">Total Amount:</div>
-            {{ $order->total_amount }}
+            {{ $order->order_amount }}
         </div>
         <div>
             <div class="mt-1 text-xs leading-5 text-slate-500">Created On:</div>

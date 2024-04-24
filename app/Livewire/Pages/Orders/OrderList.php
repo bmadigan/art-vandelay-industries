@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Pages\Orders;
 
+use App\Enums\DateRange;
 use App\Models\Order;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Masmerise\Toaster\Toaster;
@@ -18,25 +20,28 @@ class OrderList extends Component
 
     public $search = '';
 
-    #[Reactive]
     public Filters $filters;
+
 
     #[Computed(cache: false)]
     public function orders()
     {
-        if ($this->search === '') {
-            return Order::query()
-                ->withCount('shipments')
-                ->orderBy('created_at', 'desc')
-                ->paginate(50);
-        }
+        // Step 1, start the query
+        $query = Order::query()
+            ->withCount('shipments');
 
-        return Order::query()
-            ->whereAny([
+        // If we are searching, do that here.
+        if ($this->search !== '') {
+            $query = $query->whereAny([
                 'order_number',
                 'po_number',
-            ], 'LIKE', "%$this->search%")
-            ->withCount('shipments')
+            ], 'LIKE', "%$this->search%");
+        }
+
+        // Apply any Date Filters
+        $query = $this->filters->apply($query);
+
+        return $query
             ->orderBy('created_at', 'desc')
             ->paginate(50);
     }

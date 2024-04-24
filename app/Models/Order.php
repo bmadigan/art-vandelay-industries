@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Money\Currency;
-use Money\Money;
+use Illuminate\Support\Number;
 
 class Order extends Model
 {
@@ -47,19 +46,23 @@ class Order extends Model
         'user_id' => 'integer',
     ];
 
-    protected function totalAmount(): Attribute
-    {
-        return Attribute::make(
-            get: function (int $value) {
-                return new Money($value, new Currency('USD'));
-            },
-        );
-    }
-
     protected function orderDate(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->created_at->format(' F d, Y')
+            get: fn () => $this->created_at->format(
+                $this->created_at->year === now()->year
+                    ? 'M d, g:i A'
+                    : 'M d, Y, g:i A'
+            )
+        );
+    }
+
+    protected function orderAmount(): Attribute
+    {
+        $amount = $this->total_amount / 100;
+
+        return Attribute::make(
+            get: fn () => '$'.number_format($amount, 2, '.', ',')
         );
     }
 

@@ -22,6 +22,7 @@ enum DateRange: string
     public function dates(): array
     {
         return match ($this) {
+            //self::All_Time => [Carbon::create(1900, 1, 1), now()],
             self::Last_7 => [Carbon::today()->subDays(6), now()],
             self::Last_30 => [Carbon::today()->subDays(29), now()],
         };

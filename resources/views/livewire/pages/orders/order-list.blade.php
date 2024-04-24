@@ -13,9 +13,24 @@
         <div class="mb-2 flex justify-between items-center">
             <div>
                 <span class="isolate inline-flex rounded-md shadow-sm">
-                  <button type="button" class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">7 Days</button>
-                  <button type="button" class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">30 Days</button>
-                  <button type="button" class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">All Time</button>
+                  <button
+                      wire:click="$set('filters.range', 'last7')"
+                      type="button"
+                      class="relative inline-flex items-center rounded-l-md px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10 @if($filters->range->value === 'last7') bg-sky-100 @else bg-white @endif">
+                      7 Days
+                  </button>
+                  <button
+                      wire:click="$set('filters.range', 'last30')"
+                      type="button"
+                      class="relative -ml-px inline-flex items-center px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10 @if($filters->range->value === 'last30') bg-sky-100 @else bg-white @endif">
+                      30 Days
+                  </button>
+                  <button
+                      wire:click="$set('filters.range', 'all')"
+                      type="button"
+                      class="relative -ml-px inline-flex items-center rounded-r-md px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10  @if($filters->range->value === 'all') bg-sky-100 @else bg-white @endif">
+                      All Time
+                  </button>
                 </span>
             </div>
 

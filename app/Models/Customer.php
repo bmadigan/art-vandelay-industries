@@ -69,4 +69,11 @@ class Customer extends Model
             get: fn () => $this->created_at->diffForHumans()
         );
     }
+
+    public function avatar(): Attribute
+    {
+        return new Attribute(
+            get: fn () => 'https://i.pravatar.cc/300?img='.((string) crc32($this->email_primary))[0]
+        );
+    }
 }
