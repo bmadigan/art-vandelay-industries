@@ -59,7 +59,7 @@ class Customer extends Model
     public function cityState(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->city.', '.Str::upper($this->state)
+            get: fn () => $this->city.', '.Str::ucfirst($this->state)
         );
     }
 

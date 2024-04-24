@@ -22,17 +22,17 @@ class OrderList extends Component
     {
         if ($this->search === '') {
             return Order::query()
-                ->select('id', 'order_number', 'po_number', 'order_status', 'order_type', 'total_amount', 'created_at')
+                ->withCount('shipments')
                 ->orderBy('id', 'desc')
                 ->paginate(50);
         }
 
         return Order::query()
-            ->select('id', 'order_number', 'po_number', 'order_status', 'order_type', 'total_amount', 'created_at')
             ->whereAny([
                 'order_number',
                 'po_number',
             ], 'LIKE', "%$this->search%")
+            ->withCount('shipments')
             ->orderBy('id', 'desc')
             ->paginate(50);
     }

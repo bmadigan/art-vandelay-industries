@@ -13,7 +13,7 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 1000; $i++) {
+        for($i = 0; $i < 300; $i++) {
             Order::factory()->create([
                 'created_at' => now()->subDays(rand(5, 200)),
             ]);

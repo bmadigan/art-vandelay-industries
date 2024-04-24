@@ -14,7 +14,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $with = ['customer', 'user', 'orderItems', 'orderType', 'orderStatus'];
+    protected $with = ['customer', 'user', 'orderItems', 'orderType', 'orderStatus', 'shipments'];
 
     /**
      * The attributes that are mass assignable.
@@ -79,5 +79,10 @@ class Order extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function shipments(): HasMany
+    {
+        return $this->hasMany(Shipment::class);
     }
 }

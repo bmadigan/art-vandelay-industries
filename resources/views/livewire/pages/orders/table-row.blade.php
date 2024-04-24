@@ -1,11 +1,11 @@
 <tr>
     <td class="whitespace-nowrap py-3 text-xs font-medium text-slate-900 sm:pl-0">
         <div>
-            <div class="mt-1 text-xs leading-5 text-gray-500">Order Num:</div>
+            <div class="mt-1 text-xs leading-5 text-slate-500">Order Num:</div>
             {{ $order->order_number }}
         </div>
         <div>
-            <div class="mt-1 text-xs leading-5 text-gray-500">PO Num:</div>
+            <div class="mt-1 text-xs leading-5 text-slate-500">PO Num:</div>
             {{ $order->po_number }}
         </div>
     </td>
@@ -15,8 +15,46 @@
     <td class="whitespace-nowrap px-3 py-4 text-xxs text-slate-500">
         <x-status-badge :label="$order->orderType->name" :color="$order->orderType->color" />
     </td>
-    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $order->customer->full_name ?? 'n/a' }}</td>
-    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $order->total_amount }}</td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-900">
+        <div class="text-slate-900 font-medium">{{ $order->customer->full_name ?? 'n/a' }}</div>
+        <div class="flex items-center">
+            <x-icon.mail class="w-3 h-3 mr-1 text-slate-400" />
+            {{ $order->customer->email_primary ?? 'n/a' }}
+        </div>
+        <div class="flex items-center">
+            <x-icon.map-marker class="w-3 h-3 mr-1 text-slate-400" />
+            {{ $order->customer->city_state ?? 'n/a' }}
+        </div>
+    </td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-900">
+        @if($order->shipments_count > 0)
+            @foreach($order->shipments as $shipment)
+                <div class="flex items-center">
+                    <x-icon.transportation class="w-3 h-3 mr-1 text-slate-400" />
+                    {{ $order->customer->city_state ?? 'n/a' }}
+                </div>
+                <div class="flex items-center">
+                    <x-icon.truck class="w-3 h-3 mr-1 text-slate-400" />
+                    {{ $shipment->tracking_number ?? 'n/a' }}
+                </div>
+            @endforeach
+        @else
+            <div>
+                Shipping Not Available
+            </div>
+        @endif
+    </td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-900">
+        <div>
+            <div class="mt-1 text-xs leading-5 text-slate-500">Total Amount:</div>
+            {{ $order->total_amount }}
+        </div>
+        <div>
+            <div class="mt-1 text-xs leading-5 text-slate-500">Discount:</div>
+            {{ $order->discount }} %
+        </div>
+
+    </td>
     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
 
         <x-menu>

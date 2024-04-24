@@ -29,6 +29,7 @@
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-slate-900">Status</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-slate-900">Type</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-slate-900">Customer</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-slate-900">Shipping</th>
                 <th scope="col" class="px-3 py-3.5 text-left text-sm font-bold text-slate-900">Amount</th>
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
                     <span class="sr-only">Edit</span>
