@@ -12,10 +12,11 @@ class TransactionStatus extends Model
     public $timestamps = false;
 
     protected $rows = [
-        ['id' => 1, 'name' => 'Invalid'],
-        ['id' => 2, 'name' => 'Cancelled'],
-        ['id' => 3, 'name' => 'Pending'],
-        ['id' => 5, 'name' => 'Completed'],
+        ['id' => 1, 'name' => 'Invalid', 'icon' => 'icon.x-mark'],
+        ['id' => 2, 'name' => 'Cancelled', 'icon' => 'icon.x-circle'],
+        ['id' => 3, 'name' => 'Pending', 'icon' => 'icon.clock'],
+        ['id' => 4, 'name' => 'Refund', 'icon' => 'icon.receipt-refund'],
+        ['id' => 5, 'name' => 'Completed', 'icon' => 'icon.check'],
     ];
 }
 

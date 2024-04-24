@@ -11,8 +11,8 @@ class OrderType extends Model
 
     public $timestamps = false;
 
-    protected $rows = [
-        ['id' => 1, 'name' => 'Purchase Order'],
-        ['id' => 2, 'name' => 'Customer Order'],
+    protected array $rows = [
+        ['id' => 1, 'name' => 'Purchase Order', 'color' => 'bg-sky-200 text-sky-800'],
+        ['id' => 2, 'name' => 'Customer Order', 'color' => 'bg-lime-200 text-lime-700'],
     ];
 }

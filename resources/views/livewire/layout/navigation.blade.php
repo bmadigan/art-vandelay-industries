@@ -38,7 +38,7 @@ new class extends Component
                         Customers
                     </x-nav-link>
 
-                    <x-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>
+                    <x-nav-link :href="route('orders')" :active="request()->routeIs('orders')" wire:navigate>
                         Orders
                     </x-nav-link>
 

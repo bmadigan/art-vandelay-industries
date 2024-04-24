@@ -17,7 +17,7 @@ class CustomerList extends Component
 
     public $search = '';
 
-    #[Computed(cache: false)]
+    #[Computed(cache: true)]
     public function customers()
     {
         if ($this->search === '') {

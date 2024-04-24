@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Money\Currency;
+use Money\Money;
 
 class Order extends Model
 {
     use HasFactory;
+
+    protected $with = ['customer', 'user', 'orderItems', 'orderType', 'orderStatus'];
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +47,15 @@ class Order extends Model
         'user_id' => 'integer',
     ];
 
+    protected function totalAmount(): Attribute
+    {
+        return Attribute::make(
+            get: function (int $value) {
+                return new Money($value, new Currency('USD'));
+            },
+        );
+    }
+
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);
@@ -50,6 +64,16 @@ class Order extends Model
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function orderType(): BelongsTo
+    {
+        return $this->belongsTo(OrderType::class, 'order_type');
+    }
+
+    public function orderStatus(): BelongsTo
+    {
+        return $this->belongsTo(OrderStatus::class, 'order_status');
     }
 
     public function user(): BelongsTo

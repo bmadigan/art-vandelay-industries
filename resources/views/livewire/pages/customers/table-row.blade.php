@@ -1,11 +1,11 @@
 <tr>
-    <td class="whitespace-nowrap py-3 text-sm font-medium text-slate-900 sm:pl-0">
+    <td class="whitespace-nowrap py-3 text-xs font-medium text-slate-900 sm:pl-0">
         {{ $customer->full_name }}
     </td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{{ $customer->email_primary ?? 'n/a'}}</td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{{ $customer->email_invoice ?? 'n/a' }}</td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{{ $customer->city_state ?? 'n/a'}}</td>
-    <td class="whitespace-nowrap px-3 py-4 text-sm text-slate-500">{{ $customer->customer_since }}</td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->email_primary ?? 'n/a'}}</td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->email_invoice ?? 'n/a' }}</td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->city_state ?? 'n/a'}}</td>
+    <td class="whitespace-nowrap px-3 py-4 text-xs text-slate-500">{{ $customer->customer_since }}</td>
     <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
 
         <x-menu>

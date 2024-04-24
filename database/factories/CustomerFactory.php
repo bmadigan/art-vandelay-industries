@@ -20,6 +20,8 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
+        $createdAt = $this->faker->dateTimeBetween('-3 years', 'now');
+
         return [
             'first_name' => $this->faker->avRandomFirstName(),
             'last_name' => $this->faker->lastName(),
@@ -32,6 +34,7 @@ class CustomerFactory extends Factory
             'zip' => $this->faker->postcode(),
             'phone_primary' => $this->faker->avMobileNumber(),
             'notes' => $this->faker->text(),
+            'created_at' => $createdAt,
         ];
     }
 

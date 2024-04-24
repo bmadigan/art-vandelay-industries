@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Order;
+use App\Models\Shipment;
 use App\Models\TransactionStatus;
 use App\Models\TransportationType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Shipment;
 
 class ShipmentFactory extends Factory
 {
@@ -28,7 +28,7 @@ class ShipmentFactory extends Factory
         return [
             'customer_id' => $order->customer_id,
             'transportation_type' => TransportationType::inRandomOrder()->first()->id,
-            'tracking_number' => 'TRK-' . Str::upper(Str::random(10)),
+            'tracking_number' => 'TRK-'.Str::upper(Str::random(10)),
             'carrier' => $this->faker->randomElement(['FedEx', 'UPS', 'USPS', 'DHL']),
             'scheduled_date' => $order->created_at->addDays($this->faker->numberBetween(1, 3)),
             'actual_date' => $order->created_at->addDays($this->faker->numberBetween(2, 10)),
