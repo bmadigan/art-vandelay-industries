@@ -10,7 +10,15 @@
 
     <x-page-wrapper>
         <!-- Search / Filtering 0-->
-        <div class="mb-2 flex justify-end items-center">
+        <div class="mb-2 flex justify-between items-center">
+            <div>
+                <span class="isolate inline-flex rounded-md shadow-sm">
+                  <button type="button" class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">7 Days</button>
+                  <button type="button" class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">30 Days</button>
+                  <button type="button" class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-10">All Time</button>
+                </span>
+            </div>
+
             <div class="relative w-1/3 text-sm text-slate-500">
                 <input
                     placeholder="Search by order or po number"

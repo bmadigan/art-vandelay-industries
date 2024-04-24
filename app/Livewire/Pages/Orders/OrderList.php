@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Orders;
 use App\Models\Order;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,13 +18,16 @@ class OrderList extends Component
 
     public $search = '';
 
+    #[Reactive]
+    public Filters $filters;
+
     #[Computed(cache: false)]
     public function orders()
     {
         if ($this->search === '') {
             return Order::query()
                 ->withCount('shipments')
-                ->orderBy('id', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->paginate(50);
         }
 
@@ -33,16 +37,11 @@ class OrderList extends Component
                 'po_number',
             ], 'LIKE', "%$this->search%")
             ->withCount('shipments')
-            ->orderBy('id', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate(50);
     }
 
-//    public function mount()
-//    {
-//        dd($this->orders);
-//    }
-
-    public function delete($orderId)
+    public function delete($orderId): void
     {
         $order = Order::find($orderId);
 

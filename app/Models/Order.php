@@ -56,6 +56,13 @@ class Order extends Model
         );
     }
 
+    protected function orderDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->created_at->format(' F d, Y')
+        );
+    }
+
     public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);

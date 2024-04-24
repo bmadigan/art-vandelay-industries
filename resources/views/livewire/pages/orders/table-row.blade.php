@@ -50,8 +50,8 @@
             {{ $order->total_amount }}
         </div>
         <div>
-            <div class="mt-1 text-xs leading-5 text-slate-500">Discount:</div>
-            {{ $order->discount }} %
+            <div class="mt-1 text-xs leading-5 text-slate-500">Created On:</div>
+            {{ $order->order_date }}
         </div>
 
     </td>

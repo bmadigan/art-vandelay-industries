@@ -34,7 +34,7 @@ class CustomerList extends Component
             ->paginate(20);
     }
 
-    public function delete($customerId)
+    public function delete($customerId): void
     {
         // Should Authorize! But I need to get this out.
         $customer = Customer::find($customerId);
