@@ -42,13 +42,13 @@ new class extends Component
                         Orders
                     </x-nav-link>
 
-                    <x-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>
-                        Inventory
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>--}}
+{{--                        Inventory--}}
+{{--                    </x-nav-link>--}}
 
-                    <x-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>
-                        Shipments
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>--}}
+{{--                        Shipments--}}
+{{--                    </x-nav-link>--}}
                 </div>
             </div>
 
@@ -107,6 +107,14 @@ new class extends Component
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                 Dashboard
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('customers')" :active="request()->routeIs('customers')" wire:navigate>
+                Customers
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('orders')" :active="request()->routeIs('orders')" wire:navigate>
+                Orders
             </x-responsive-nav-link>
 
         </div>
