@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Order;
 use App\Models\Shipment;
-use App\Models\TransactionStatus;
+use App\Models\ShipmentStatus;
 use App\Models\TransportationType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -32,7 +32,7 @@ class ShipmentFactory extends Factory
             'carrier' => $this->faker->randomElement(['FedEx', 'UPS', 'USPS', 'DHL']),
             'scheduled_date' => $order->created_at->addDays($this->faker->numberBetween(1, 3)),
             'actual_date' => $order->created_at->addDays($this->faker->numberBetween(2, 10)),
-            'shipment_status' => TransactionStatus::inRandomOrder()->first()->id,
+            'shipment_status' => ShipmentStatus::inRandomOrder()->first()->id,
             'order_id' => $order->id,
         ];
     }

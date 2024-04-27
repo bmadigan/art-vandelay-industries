@@ -15,26 +15,35 @@
                     <div class="bg-stone-200 px-4 py-6 sm:px-6 lg:px-8 rounded-b-xl">
                         <p class="text-sm font-medium leading-6 text-slate-500">Active Orders</p>
                         <p class="mt-2 flex items-baseline gap-x-2">
-                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">405</span>
+                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">
+                                {{ $this->total_active_orders }}
+                            </span>
                         </p>
                     </div>
                     <div class="bg-stone-200 px-4 py-6 sm:px-6 lg:px-8 rounded-b-xl">
                         <p class="text-sm font-medium leading-6 text-slate-500">30 Day Order Total</p>
                         <p class="mt-2 flex items-baseline gap-x-2">
-                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">3.65</span>
-                            <span class="text-sm text-slate-400">mins</span>
+                            <span class="text-2xl text-slate-400">$</span>
+                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">
+                                {{ $this->total_order_30_days }}
+                            </span>
+                            <span class="text-sm text-slate-400">USD</span>
                         </p>
                     </div>
                     <div class="bg-stone-200 px-4 py-6 sm:px-6 lg:px-8 rounded-b-xl">
                         <p class="text-sm font-medium leading-6 text-slate-500">Active Shipments</p>
                         <p class="mt-2 flex items-baseline gap-x-2">
-                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">3</span>
+                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">
+                                {{ $this->total_active_shipments }}
+                            </span>
                         </p>
                     </div>
                     <div class="bg-stone-200 px-4 py-6 sm:px-6 lg:px-8 rounded-b-xl">
                         <p class="text-sm font-medium leading-6 text-slate-500">Products for ReOrder Pts</p>
                         <p class="mt-2 flex items-baseline gap-x-2">
-                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">54</span>
+                            <span class="text-4xl font-extrabold tracking-tight text-slate-800">
+                                {{ $this->products_for_reorder }}
+                            </span>
                             <span class="text-sm text-slate-400">(fake/random)</span>
                         </p>
                     </div>
@@ -101,7 +110,9 @@
                             <x-icon.credit-card class="w-6 h-6 mr-2" />
                             <span class="text-lg font-medium text-slate-800">Recent Orders</span>
                         </div>
-                        <a class="text-xs font-semibold text-sky-500">View All</a>
+                        <a href="{{ route('orders') }}" class="text-xs font-semibold text-sky-500">
+                            View All
+                        </a>
                     </div>
 
                     <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-600">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Shipment extends Model
 {
     use HasFactory;
-
-    //protected $with = ['order', 'transportationType'];
 
     /**
      * The attributes that are mass assignable.
@@ -42,15 +41,15 @@ class Shipment extends Model
         'order_id' => 'integer',
     ];
 
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('shipment_status', '<=', 2);
+    }
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
-
-//    public function customer(): BelongsTo
-//    {
-//        return $this->belongsTo(Customer::class);
-//    }
 
     public function transportationType(): BelongsTo
     {
