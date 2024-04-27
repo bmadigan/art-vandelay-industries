@@ -11,6 +11,8 @@ class Shipment extends Model
 {
     use HasFactory;
 
+    //protected $with = ['order', 'transportationType'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,10 +47,10 @@ class Shipment extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function customer(): BelongsTo
-    {
-        return $this->belongsTo(Customer::class);
-    }
+//    public function customer(): BelongsTo
+//    {
+//        return $this->belongsTo(Customer::class);
+//    }
 
     public function transportationType(): BelongsTo
     {

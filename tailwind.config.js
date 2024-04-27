@@ -12,6 +12,8 @@ export default {
     safelist: [
         'bg-red-200',
         'text-red-800',
+        'bg-amber-200',
+        'text-amber-800',
         'bg-rose-200',
         'text-rose-800',
         'bg-green-200',

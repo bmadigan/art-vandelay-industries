@@ -46,7 +46,7 @@
 
             <div class="grid grid-cols-1 my-4 xl:grid-cols-2 xl:gap-4">
                 <!-- Upcoming Shipments widget -->
-                <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 xl:mb-0">
+                <div class="p-4 mb-4 bg-white border border-slate-200 rounded-lg shadow-sm sm:p-6 xl:mb-0">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center mb-4">
                             <x-icon.transportation class="w-6 h-6 mr-2" />
@@ -55,44 +55,47 @@
                         <a class="text-xs font-semibold text-sky-500">View All</a>
                     </div>
 
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                        <thead class="bg-gray-50 dark:bg-gray-700">
+                    <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-600">
+                        <thead class="bg-slate-50 dark:bg-slate-700">
                         <tr>
+                            <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
+                                Type
+                            </th>
                             <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
                                 Shipment Tracking
                             </th>
                             <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
-                                Status
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
                                 Scheduled Dates
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
-                                Customer Information
                             </th>
                         </tr>
                         </thead>
-                        <tbody class="bg-white dark:bg-gray-800">
-                        <tr>
-                            <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                Payment from <span class="font-semibold">Bonnie Green</span>
-                            </td>
-                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                Apr 23 ,2021
-                            </td>
-                            <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
-                                $2300
-                            </td>
-                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                0047568936
-                            </td>
-                        </tr>
+                        <tbody class="bg-white">
+                        @foreach($this->shipments as $shipment)
+                            <tr>
+                                <td class="p-4 text-xs font-normal text-slate-900 whitespace-nowrap">
+                                    <x-status-badge :label="$shipment->transportationType->name" :color="$shipment->transportationType->color" />
+                                </td>
+                                <td class="p-4 text-xs font-normal text-slate-900 whitespace-nowrap">
+                                    <div>
+                                        <span class="text-slate-500">Tracking Num:</span>
+                                        {{ $shipment->tracking_number ?? 'n/a' }}
+                                    </div>
+                                    {{ $shipment->order->customer->city_state ?? 'n/a' }}
+                                </td>
+                                <td class="p-4 text-xs font-normal text-slate-900 whitespace-nowrap">
+                                    <div>
+                                        {{ $shipment->scheduled_delivery_date ?? 'n/a' }}
+                                    </div>
+
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
                 </div>
                 <!--Recent Orders widget -->
-                <div class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 xl:mb-0">
+                <div class="p-4 mb-4 bg-white border border-slate-200 rounded-lg shadow-sm sm:p-6 xl:mb-0">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center mb-4">
                             <x-icon.credit-card class="w-6 h-6 mr-2" />
@@ -101,38 +104,36 @@
                         <a class="text-xs font-semibold text-sky-500">View All</a>
                     </div>
 
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                        <thead class="bg-gray-50 dark:bg-gray-700">
+                    <table class="min-w-full divide-y divide-slate-200 dark:divide-slate-600">
+                        <thead class="bg-slate-50 dark:bg-slate-700">
                         <tr>
                             <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
-                                Shipment Tracking
+                                Order Info
                             </th>
                             <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
                                 Status
-                            </th>
-                            <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
-                                Scheduled Dates
                             </th>
                             <th scope="col" class="p-2 text-xs font-medium tracking-wider text-left text-slate-500 uppercase">
                                 Customer Information
                             </th>
                         </tr>
                         </thead>
-                        <tbody class="bg-white dark:bg-gray-800">
+                        <tbody class="bg-white">
+                        @foreach($this->orders as $order)
                         <tr>
-                            <td class="p-4 text-sm font-normal text-gray-900 whitespace-nowrap dark:text-white">
-                                Payment from <span class="font-semibold">Bonnie Green</span>
+                            <td class="p-4 text-xs font-normal text-slate-900 whitespace-nowrap">
+                                <div class="font-bold">{{ $order->order_amount }}</div>
+                                <div class="text-slate-500">{{ $order->order_date }}</div>
                             </td>
-                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                Apr 23 ,2021
+                            <td class="p-4 text-xs font-normal text-slate-500 whitespace-nowrap">
+                                <x-status-badge :label="$order->orderStatus->name" :color="$order->orderStatus->color" />
                             </td>
-                            <td class="p-4 text-sm font-semibold text-gray-900 whitespace-nowrap dark:text-white">
-                                $2300
-                            </td>
-                            <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                0047568936
+                            <td class="p-4 text-xs font-normal text-slate-900 whitespace-nowrap">
+                                {{ $order->customer->full_name ?? 'n/a' }}
+                                <div class="text-slate-500">{{ $order->customer->email_primary ?? 'n/a' }}</div>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
