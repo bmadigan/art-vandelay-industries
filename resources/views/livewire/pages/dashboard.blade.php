@@ -19,7 +19,7 @@
                         </p>
                     </div>
                     <div class="bg-stone-200 px-4 py-6 sm:px-6 lg:px-8 rounded-b-xl">
-                        <p class="text-sm font-medium leading-6 text-slate-500">Monthly Order Total</p>
+                        <p class="text-sm font-medium leading-6 text-slate-500">30 Day Order Total</p>
                         <p class="mt-2 flex items-baseline gap-x-2">
                             <span class="text-4xl font-extrabold tracking-tight text-slate-800">3.65</span>
                             <span class="text-sm text-slate-400">mins</span>
