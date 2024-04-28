@@ -75,12 +75,12 @@
                                 The Art of Crafting a Seamless Supply Chain Solution
                             </p>
 
-                            <div class="mt-6 text-lg text-sm space-y-4 leading-6 text-slate-600">
+                            <div class="mt-6 text-lg text-base space-y-4 leading-6 text-slate-600">
                                 <p>Alright, listen up folks. I'm about to lay down some serious truth bombs about this supply chain Laravel app I've been cooking up.</p>
                                 <p>First off, let's address the elephant in the room - the name "Art Vandelay Industries." Yeah, it's a nod to that classic Seinfeld episode where George pretends to be an import/export guy. But hey, if you can't have a little fun with your work, what's the point?</p>
                             </div>
 
-                            <dl class="mt-10 max-w-xl space-y-8 text-sm leading-2 text-slate-600 lg:max-w-none">
+                            <dl class="mt-10 max-w-xl space-y-8 text-base leading-2 text-slate-600 lg:max-w-none">
                                 <div class="relative pl-9">
                                     <dt class="inline font-semibold mr-1 text-slate-900">
                                         <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
