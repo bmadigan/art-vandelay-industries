@@ -10,7 +10,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Dashboard Logistics')]
+#[Title('Supply Chain Dashboard')]
 class Dashboard extends Component
 {
     #[Computed(cache: false)]
