@@ -49,35 +49,7 @@
         <x-toaster-hub />
         @livewireScripts
     </body>
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('progressBar', () => ({
-                progressBarWidth: 1,
-                currentStatus: '',
-                init() {
-                    this.currentStatus = '{{$order->status}}';
-                    this.updateProgressBar();
 
-                    Echo.channel('order.updated')
-                        .listen('OrderShipmentStatusUpdated', (e) => {
-                            this.currentStatus = e.status;
-                            this.updateProgressBar();
-                        });
-                },
-                updateProgressBar() {
-                    if (this.currentStatus === 'processing') {
-                        this.progressBarWidth = 40;
-                    }
-                    else if (this.currentStatus === 'shipped') {
-                        this.progressBarWidth = 65;
-                    }
-                    else if (this.currentStatus === 'delivered') {
-                        this.progressBarWidth = 100;
-                    }
-                }
-            }));
-        });
-    </script>
 </html>
 
 

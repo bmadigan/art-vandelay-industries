@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages\Orders;
 
+use App\Livewire\Actions\CancelOrder;
 use App\Models\Order;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -47,7 +49,11 @@ class OrderList extends Component
     {
         $order = Order::find($orderId);
 
-        if ($order->cancelOrder()) {
+        Log::info('PRE Cancelling Order ID: '.$order->id);
+
+        $cancelOrder = new CancelOrder($order);
+
+        if ($cancelOrder($order)) {
             Toaster::success('🗑️ Order has been deleted!');
         } else {
             Toaster::warning('🚫️ Order has been shipped already.');

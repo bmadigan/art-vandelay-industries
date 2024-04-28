@@ -4,6 +4,7 @@ namespace App\Livewire\Actions;
 
 use App\Models\Order;
 use App\Models\OrderStatus;
+use Illuminate\Support\Facades\Log;
 
 class CancelOrder
 {
@@ -11,12 +12,14 @@ class CancelOrder
     {
         //$order = Order::active()->inRandomOrder()->first();
 
+        Log::info('Cancelling Order ID: '.$order->id);
+
         if ($order->canBeCanceled()) {
             //ReStalk Inventory
             $order->orderItems()->delete();
             $order->shipments()->delete();
 
-            $this->update([
+            $order->update([
                 'order_status' => 6, // canceled
             ]);
 

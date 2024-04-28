@@ -18,29 +18,25 @@ class LoginForm extends Form
     #[Validate('required|string')]
     public string $password = '';
 
-    #[Validate('boolean')]
-    public bool $remember = false;
-
     /**
      * Attempt to authenticate the request's credentials.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-//    public function authenticate(): void
-//    {
-//        dd('is this it?');
-//        $this->ensureIsNotRateLimited();
-//
-//        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
-//            RateLimiter::hit($this->throttleKey());
-//
-//            throw ValidationException::withMessages([
-//                'form.email' => trans('auth.failed'),
-//            ]);
-//        }
-//
-//        RateLimiter::clear($this->throttleKey());
-//    }
+    public function authenticate(): void
+    {
+        $this->ensureIsNotRateLimited();
+
+        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'form.email' => trans('auth.failed'),
+            ]);
+        }
+
+        RateLimiter::clear($this->throttleKey());
+    }
 
     /**
      * Ensure the authentication request is not rate limited.

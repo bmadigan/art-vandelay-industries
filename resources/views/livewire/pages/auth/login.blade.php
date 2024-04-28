@@ -13,7 +13,10 @@ new #[Layout('layouts.guest')] class extends Component {
     {
         if (! Auth::check()) {
 
-            Auth::loginUsingId(26, true);
+//            $this->validate();
+//            $this->form->authenticate();
+
+            Auth::loginUsingId(26, true); // Auto login user for demo purposes
 
             Session::regenerate();
 
@@ -26,11 +29,11 @@ new #[Layout('layouts.guest')] class extends Component {
      */
     public function login(): void
     {
-        dd('before the authenticate method');
+//        dd('before the authenticate method');
 
-//        $this->validate();
-//
-//        $this->form->authenticate();
+        $this->validate();
+
+        $this->form->authenticate();
 
         Session::regenerate();
 
