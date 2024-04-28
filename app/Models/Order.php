@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Livewire\Actions\CancelOrder;
+use App\Livewire\Actions\CreateOrder;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -54,16 +57,7 @@ class Order extends Model
     public function cancelOrder(): bool
     {
         if ($this->canBeCanceled()) {
-            $this->orderItems()->delete();
-            $this->shipments()->delete();
-
-            $this->update([
-                'order_status' => 6, // Canceled
-            ]);
-
-            // Possible TODOS:
-            // ReStalk Inventory
-            // Notify the Customer
+            $order = new CancelOrder($this);
 
             return true;
         }

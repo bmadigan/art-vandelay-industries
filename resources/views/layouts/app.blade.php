@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ $title ?? config('app.name') }}</title>
+        <title>{{ $title ?? 'Dashboard' }} - {{ config('app.name') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -49,6 +49,35 @@
         <x-toaster-hub />
         @livewireScripts
     </body>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('progressBar', () => ({
+                progressBarWidth: 1,
+                currentStatus: '',
+                init() {
+                    this.currentStatus = '{{$order->status}}';
+                    this.updateProgressBar();
+
+                    Echo.channel('order.updated')
+                        .listen('OrderShipmentStatusUpdated', (e) => {
+                            this.currentStatus = e.status;
+                            this.updateProgressBar();
+                        });
+                },
+                updateProgressBar() {
+                    if (this.currentStatus === 'processing') {
+                        this.progressBarWidth = 40;
+                    }
+                    else if (this.currentStatus === 'shipped') {
+                        this.progressBarWidth = 65;
+                    }
+                    else if (this.currentStatus === 'delivered') {
+                        this.progressBarWidth = 100;
+                    }
+                }
+            }));
+        });
+    </script>
 </html>
 
 
