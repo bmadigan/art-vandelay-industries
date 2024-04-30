@@ -12,8 +12,6 @@ class CancelOrder
     {
         //$order = Order::active()->inRandomOrder()->first();
 
-        Log::info('Cancelling Order ID: '.$order->id);
-
         if ($order->canBeCanceled()) {
             //ReStalk Inventory
             $order->orderItems()->delete();

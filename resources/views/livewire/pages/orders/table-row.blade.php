@@ -226,7 +226,7 @@
                                         </x-dialog.close>
 
                                         @if($order->canBeCanceled())
-                                        <x-danger-button type="button" wire:click="$parent.delete($order->id)">
+                                        <x-danger-button type="button" wire:click="$parent.cancel($order->id)">
                                             Cancel Order
                                         </x-danger-button>
                                         @endif
@@ -239,9 +239,9 @@
 
                 <x-menu.item>
                     <a href="#"
-                       wire:confirm="Are you sure you want to delete this Order?"
-                       wire:click="$parent.delete({{ $order->id }})"
-                       class="text-rose-500 hover:text-rose-900">Delete Order</a>
+                       wire:confirm="Are you sure you want to cancel this Order?"
+                       wire:click="$parent.cancel({{ $order->id }})"
+                       class="text-rose-500 hover:text-rose-900">Cancel Order</a>
                 </x-menu.item>
 
             </x-menu.items>

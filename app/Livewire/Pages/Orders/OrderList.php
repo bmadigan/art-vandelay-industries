@@ -45,16 +45,14 @@ class OrderList extends Component
             ->paginate(50);
     }
 
-    public function delete($orderId): void
+    public function cancel($orderId): void
     {
-        $order = Order::find($orderId);
+        $order = Order::findOrFail($orderId);
 
-        Log::info('PRE Cancelling Order ID: '.$order->id);
-
-        $cancelOrder = new CancelOrder($order);
+        $cancelOrder = new CancelOrder();
 
         if ($cancelOrder($order)) {
-            Toaster::success('🗑️ Order has been deleted!');
+            Toaster::success('🗑️ Order has been canceled!');
         } else {
             Toaster::warning('🚫️ Order has been shipped already.');
         }
