@@ -13,9 +13,10 @@ This is a Laravel 11 application using the TALL Stack (Tailwind CSS, Alpine.js, 
 
 1. Clone the repository
 2. Run `composer install`
-3. Run `php artisan migrate:fresh && art db:seed`
-3. Run `npm install`
-4. Run `npm run dev`
+3. Run `php artisan migrate:fresh`
+4. Run `php artisan db:seed`
+5. Run `npm install`
+6. Run `npm run dev`
 
 ### Auth Credentials
 
