@@ -9,6 +9,9 @@ This is a Laravel 11 application using the TALL Stack (Tailwind CSS, Alpine.js, 
 
 ***This will be a continued work in progress ...***
 
+### Website
+[Art Vandelay Industries - Sample App](http://artvandelay.madigan.dev).
+
 ## Installation
 
 1. Clone the repository
