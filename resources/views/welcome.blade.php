@@ -31,7 +31,11 @@
                                 <div class="relative flex items-center rounded-full px-3 py-1 text-sm leading-6 text-slate-500 ring-1 ring-slate-900/10 hover:ring-slate-900/20 hover:bg-indigo-50">
                                     <x-icon.github class="w-6 h-6 mr-1" />
                                     View Code on Github.
-                                    <a href="#" class="whitespace-nowrap ml-2 font-semibold text-neutral-600"><span class="absolute inset-0" aria-hidden="true"></span>View Code <span aria-hidden="true">&rarr;</span></a>
+                                    <a href="https://github.com/bmadigan/art-vandelay-industries"
+                                       class="whitespace-nowrap ml-2 font-semibold text-neutral-600">
+                                        <span class="absolute inset-0" aria-hidden="true"></span>
+                                        View Code <span aria-hidden="true">&rarr;</span>
+                                    </a>
                                 </div>
                             </div>
 
@@ -76,8 +80,9 @@
                             </p>
 
                             <div class="mt-6 text-lg text-base space-y-4 leading-6 text-slate-600">
-                                <p>Alright, listen up folks. I'm about to lay down some serious truth bombs about this supply chain Laravel app I've been cooking up.</p>
-                                <p>First off, let's address the elephant in the room - the name "Art Vandelay Industries." Yeah, it's a nod to that classic Seinfeld episode where George pretends to be an import/export guy. But hey, if you can't have a little fun with your work, what's the point?</p>
+                                <p>Hey there, Laravel community! I'm really excited to share with you all a project I've been working on to show some code on
+                                    <a href="https://github.com/bmadigan" class="text-indigo-700 hover:text-indigo-400">Github</a> – a supply chain application built with the TALL stack, which includes Tailwind CSS, Alpine.js, Laravel, and Livewire.</p>
+                                <p>Now, you might be wondering about the name "Art Vandelay Industries." Well, as a fan of the classic sitcom Seinfeld, I couldn't resist paying homage to George Costanza's fictional import/export business. It's a little inside joke for my fellow Seinfeld enthusiasts out there.</p>
                             </div>
 
                             <dl class="mt-10 max-w-xl space-y-8 text-base leading-2 text-slate-600 lg:max-w-none">
@@ -89,7 +94,7 @@
                                         TALL Stack
                                     </dt>
                                     <dd class="inline">
-                                        Now, let's talk tech. I've gone all-in on the TALL Stack - Tailwind CSS, Alpine.js, Laravel, and Livewire. This bad boy is a lean, mean, reactive machine. Livewire is the secret sauce that lets me whip up dynamic interfaces without all the JavaScript bloat. It's like having a direct line to the server!
+                                        <p>But let's get to the good stuff – the tech behind this application. At the core, we have Livewire, which has been an absolute game-changer for building reactive user interfaces within Laravel. It allows us to create dynamic, real-time experiences without the complexity of managing JavaScript state across the client and server.</p>
                                     </dd>
                                 </div>
                                 <div class="relative pl-9">
@@ -100,7 +105,7 @@
                                         Testing 1...2...3
                                     </dt>
                                     <dd class="inline">
-                                        But I'm not just slapping code together willy-nilly (sort-of). Oh no, my friends. I'm a firm believer in testing, testing, and more testing. That's why I'm <em>planning on having</em> a full suite of PHPUnit tests locked and loaded, covering most of every nook and cranny of this app's features. We all want to sleep at night right?
+                                        To ensure the quality and maintainability of the codebase, I am planning on implementing a comprehensive list of tests. Testing is a crucial part of any modern web application, and it's something I'm passionate about promoting within the Laravel ecosystem. With these tests in place, we can confidently refactor and add new features without worrying about breaking existing functionality.
                                     </dd>
                                 </div>
                                 <div class="relative pl-9">
@@ -112,7 +117,7 @@
                                         Open Source
                                     </dt>
                                     <dd class="inline">
-                                        But here's the real kicker: I'm not just building this thing for kicks. Nope, this bad boy is going open source. That's right, I'm putting my code out there for the world to see. Why? Because I'm not just a developer, I'm a showman. I want potential employers to see my coding style, my attention to detail, and hopefully both help other developers learn and help me learn a few things along the way.
+                                        <p>But here's the really exciting part: I plan to open-source this project and share it with the Laravel community. My goal is not only to contribute to the collective knowledge but also to showcase my coding style and expertise to potential employers or collaborators.</p>
                                     </dd>
                                 </div>
                             </dl>
@@ -127,20 +132,20 @@
         <footer class="bg-white">
             <div class="mx-auto max-w-7xl overflow-hidden px-6 py-8 sm:py-14 lg:px-8">
                 <div class="mt-2 flex justify-center space-x-10">
-                    <a href="#" class="text-slate-400 hover:text-slate-500">
+                    <a href="https://x.com/bmadigan" class="text-slate-400 hover:text-slate-500">
                         <span class="sr-only">X</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
                         </svg>
                     </a>
-                    <a href="#" class="text-slate-400 hover:text-slate-500">
+                    <a href="https://github.com/bmadigan" class="text-slate-400 hover:text-slate-500">
                         <span class="sr-only">GitHub</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
                         </svg>
                     </a>
                     <a href="#" class="text-slate-400 hover:text-slate-500">
-                        <span class="sr-only">YouTube</span>
+                        <span class="sr-only">LinkedIn</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor"  viewBox="0 0 512 512">
                             <path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32m-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43c0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43m264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44c-17.74 0-28.24 12-32.91 23.69c-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44c42.13 0 74 27.77 74 87.64Z"/>
                         </svg>
@@ -148,7 +153,7 @@
 
                 </div>
                 <div class="mt-10 text-center space-y-1.5 text-xs leading-5 text-slate-500">
-                    <div>&copy; {{ date('Y') }} (No One Really Cares)</div>
+                    <div>&copy; {{ date('Y') }} (Brad Madigan - Laravel Developer)</div>
                     <div>Built with ☕ and 🍺 in Ontario, Canada</div>
                 </div>
             </div>
