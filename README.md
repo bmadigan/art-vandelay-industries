@@ -1,8 +1,3 @@
-<p align="center"><a href="https://github.com/bmadigan/art-vandelay-industries" target="_blank">
-<img src="kup-cmyk-red.svg" width="400" alt="Laravel Logo">
-</a></p>
-
-
 ## Art Vandelay Industries
 
 This is a Laravel 11 application using the TALL Stack (Tailwind CSS, Alpine.js, Laravel, Livewire).
@@ -10,7 +5,7 @@ This is a Laravel 11 application using the TALL Stack (Tailwind CSS, Alpine.js, 
 ***This will be a continued work in progress ...***
 
 ### Website
-[Art Vandelay Industries - Sample App](http://artvandelay.madigan.dev).
+[Art Vandelay Industries - Sample App](https://madigan.dev/artvandelay).
 
 ## Installation
 
@@ -31,7 +26,7 @@ for security and mostly to show how I like to structure my Laravel applications.
 
 ## Sample Dashboard
 
-![Dashboard](/img/screenshot-dashboard.jpg)
+![Dashboard](https://madigan.dev/img/screenshot-order-details.png)
 
 ## License
 
